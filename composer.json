@@ -1,0 +1,51 @@
+{
+    "name": "bangpound/instagram-client",
+    "description": "Instagram client",
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": ">=5.3.3",
+        "silex/silex": "2.0.*@dev",
+        "symfony/class-loader": "~2.5",
+        "symfony/config": "~2.5",
+        "symfony/console": "~2.5",
+        "symfony/form": "~2.5",
+        "symfony/monolog-bridge": "~2.5",
+        "symfony/process": "~2.5",
+        "symfony/security": "~2.5",
+        "symfony/translation": "~2.5",
+        "symfony/twig-bridge": "~2.5",
+        "symfony/validator": "~2.5",
+        "guzzle/silex-provider": "2.0.*@dev",
+        "php-instagram-api/php-instagram-api": "dev-master",
+        "doctrine/cache": "1.4.*@dev"
+    },
+    "require-dev": {
+        "silex/web-profiler": "2.0.*@dev",
+        "symfony/browser-kit": "~2.5",
+        "symfony/css-selector": "~2.5",
+        "symfony/debug": "~2.5",
+        "symfony/finder": "~2.5",
+        "raulfraile/ladybug": "dev-master"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "http://github.com/bangpound/Silex-WebProfiler"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/bangpound/guzzle-silex-extension"
+        }
+    ],
+    "autoload": {
+        "psr-0": { "": "src/" }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}

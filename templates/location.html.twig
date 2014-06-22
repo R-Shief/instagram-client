@@ -1,0 +1,28 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    {% for row in media|batch(6) %}
+        <div class="row">
+            {% for item in row %}
+                <div class="col-md-2">
+                    <div class="thumbnail">
+                        <img src="{{ item }}" alt="...">
+                        <div class="caption">
+                            <h6>{{ item.caption }}</h6>
+                            <ul class="list-unstyled">
+                                <li>{{ item.user }}</li>
+                                <li>{{ item.createdTime | date }}</li>
+                                {% if item.hasNamedLocation %}
+                                    <li>{{ item.location }}</li>
+                                {% else %}
+                                    <li>{{ item.location.lat }}, {{ item.location.lng }}</li>
+                                {% endif %}
+                            </ul>
+                            <p><a href="{{ item.link }}" class="btn btn-primary" role="button">View</a></p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+{% endblock %}
