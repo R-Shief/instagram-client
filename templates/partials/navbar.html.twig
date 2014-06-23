@@ -30,7 +30,8 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if app.session.has('code') %}
-                    <p class="navbar-text">{{ app.session.get('username') }} - {{ app.session.get('api_limit') }}</p>
+                    <li class="navbar-text">{{ app.session.get('username') }} - {{ app.session.get('api_limit') }}</li>
+                    <li><a href="{{ app.request_stack.currentRequest.basepath }}/logout">Logout</a></li>
                 {% else %}
                     <li><a href="{{ app.request_stack.currentRequest.basepath }}/auth">Authorize</a></li>
                 {% endif %}

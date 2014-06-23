@@ -20,6 +20,12 @@ $app->get('/location/{lat}/{lng}', function (Request $request, $lat, $lng) use (
   })
 ;
 
+$app->get('/logout', function (Request $request) use ($app) {
+      $request->getSession()->invalidate();
+      return $app->redirect('/');
+  })
+;
+
 $app->get('/auth', function () use ($app) {
 
       $app['instagram.auth']->authorize();
