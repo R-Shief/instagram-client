@@ -41,6 +41,14 @@
     "autoload": {
         "psr-0": { "": "src/" }
     },
+    "scripts": {
+        "post-update-cmd": [
+            "bower update"
+        ],
+        "post-install-cmd": [
+            "bower install"
+        ]
+    },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "extra": {
