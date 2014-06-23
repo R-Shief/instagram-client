@@ -11,6 +11,8 @@
     ],
     "dependencies": {
         "bootstrap-sass-official": "3.1.1",
-        "jquery": "1.11.1"
+        "jquery": "1.11.1",
+        "leaflet": "0.7.3",
+        "leaflet.draw": "0.2.3"
     }
 }

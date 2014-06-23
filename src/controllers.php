@@ -8,8 +8,36 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 //Request::setTrustedProxies(array('127.0.0.1'));
 
-$app->get('/', function () use ($app) {
-      return $app['twig']->render('index.html.twig');
+$app->match('/', function (Request $request) use ($app) {
+      // some default data for when the form is displayed the first time
+      $data = array(
+        'lat' => '31.7833',
+        'lng' => '35.2167',
+        'distance' => '5000',
+        'count' => '100',
+      );
+
+      $form = $app['form.factory']->createBuilder('form', $data)
+        ->add('lat')
+        ->add('lng')
+        ->add('distance')
+        ->add('count')
+        ->add('submit', 'submit')
+        ->getForm();
+
+      $form->handleRequest($request);
+
+      if ($form->isValid()) {
+          $data = $form->getData();
+
+          $url = $app['url_generator']->generate('location', $data);
+
+          // redirect somewhere
+          return $app->redirect($url);
+      }
+
+      // display the form
+      return $app['twig']->render('index.html.twig', array('form' => $form->createView()));
   });
 
 $app->get('/location/{lat}/{lng}', function (Request $request, $lat, $lng) use ($app) {
@@ -17,7 +45,7 @@ $app->get('/location/{lat}/{lng}', function (Request $request, $lat, $lng) use (
       $media = $app['instagram']->searchMedia( $lat, $lng, $params);
 
       return $app['twig']->render('location.html.twig', array('media' => $media));
-  })
+  })->bind('location')
 ;
 
 $app->get('/logout', function (Request $request) use ($app) {

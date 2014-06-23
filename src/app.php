@@ -2,6 +2,7 @@
 
 use Guzzle\GuzzleServiceProvider;
 use Silex\Application;
+use Silex\Provider\FormServiceProvider;
 use Silex\Provider\HttpFragmentServiceProvider;
 use Silex\Provider\RoutingServiceProvider;
 use Silex\Provider\SessionServiceProvider;
@@ -15,6 +16,11 @@ $app->register(new ValidatorServiceProvider());
 $app->register(new ServiceControllerServiceProvider());
 $app->register(new HttpFragmentServiceProvider());
 $app->register(new TwigServiceProvider());
+$app->register(new FormServiceProvider());
+$app->register(new \Silex\Provider\LocaleServiceProvider());
+$app->register(new Silex\Provider\TranslationServiceProvider(), array(
+    'translator.domains' => array(),
+  ));
 $app->register(new SessionServiceProvider(), array(
       'session.storage.save_path' => __DIR__.'/../var/sessions'
   ));
