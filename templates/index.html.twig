@@ -10,6 +10,7 @@
 
 {% block javascripts %}
     <script src="{{ app.request_stack.getCurrentRequest.basePath }}/vendor/leaflet/dist/leaflet.js"></script>
+    <script src="{{ app.request_stack.getCurrentRequest.basePath }}/vendor/leaflet-providers/leaflet-providers.js"></script>
     <script src="{{ app.request_stack.getCurrentRequest.basePath }}/vendor/leaflet.draw/dist/leaflet.draw.js"></script>
     <script>
         var map = L.map('map').fitBounds([
@@ -18,10 +19,7 @@
                 ]),
                 drawnItems = new L.FeatureGroup();
 
-        L.tileLayer('http://{s}.tiles.mapbox.com/v3/bangpound.ij8i95a0/{z}/{x}/{y}.png', {
-            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-            maxZoom: 18
-        }).addTo(map);
+        L.tileLayer('MapBox.bangpound.ij8i95a0').addTo(map);
 
         map.addLayer(drawnItems);
 
