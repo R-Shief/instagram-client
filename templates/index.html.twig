@@ -19,6 +19,11 @@
                 ]),
                 drawnItems = new L.FeatureGroup();
 
+        map.setMaxBounds([
+            [33.433380, 35.940941],
+            [29.496500, 34.267700]
+        ]);
+
         L.tileLayer('MapBox.bangpound.ij8i95a0').addTo(map);
 
         map.addLayer(drawnItems);
