@@ -37,7 +37,10 @@ $app->match('/', function (Request $request) use ($app) {
       }
 
       // display the form
-      return $app['twig']->render('index.html.twig', array('form' => $form->createView()));
+      return $app['twig']->render('index.html.twig', array(
+          'fluid' => true,
+          'form' => $form->createView()
+        ));
   });
 
 $app->get('/location/{lat}/{lng}', function (Request $request, $lat, $lng) use ($app) {
