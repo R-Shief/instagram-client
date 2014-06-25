@@ -53,6 +53,7 @@ $app->get('/location/{lat}/{lng}', function (Request $request, $lat, $lng) use (
 
 $app->get('/logout', function (Request $request) use ($app) {
       $request->getSession()->invalidate();
+
       return $app->redirect('/');
   })
 ;
@@ -69,6 +70,7 @@ $app->get('/token', function (Request $request) use ($app) {
       /** @var \Instagram\CurrentUser $current_user */
       $current_user = $app['instagram']->getCurrentUser();
       $app['session']->set('username', $current_user->getUserName());
+
       return $app->redirect('/');
   })
 ;

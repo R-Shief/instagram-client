@@ -24,7 +24,7 @@ $app->register(new Silex\Provider\TranslationServiceProvider(), array(
 $app->register(new SessionServiceProvider(), array(
       'session.storage.save_path' => __DIR__.'/../var/sessions'
   ));
-$app->extend('twig', function(\Twig_Environment $twig, $app) {
+$app->extend('twig', function (\Twig_Environment $twig, $app) {
       $twig->addGlobal('app', $app);
 
       return $twig;

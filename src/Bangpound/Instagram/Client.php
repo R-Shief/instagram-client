@@ -5,8 +5,8 @@ namespace Bangpound\Instagram;
 use Instagram\Net\ClientInterface;
 use Symfony\Component\HttpFoundation\Session\Session;
 
-class Client implements ClientInterface {
-
+class Client implements ClientInterface
+{
     private $client;
 
     public function __construct(\Guzzle\Http\Client $client, Session $session)
@@ -20,6 +20,7 @@ class Client implements ClientInterface {
         $request = $this->client->get(sprintf( "%s?%s", $url, http_build_query( $data)));
         $response = $request->send();
         $this->session->set('api_limit', $response->getHeader('X-Ratelimit-Remaining')->toArray()[0]);
+
         return $response->getBody();
     }
 
