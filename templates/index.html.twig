@@ -13,6 +13,7 @@
     <script src="{{ app.request_stack.getCurrentRequest.basePath }}/vendor/leaflet-providers/leaflet-providers.js"></script>
     <script src="{{ app.request_stack.getCurrentRequest.basePath }}/vendor/leaflet.draw/dist/leaflet.draw.js"></script>
     <script>
+        (function () {
         var map = L.map('map').fitBounds([
                     [33.433380, 35.940941],
                     [29.496500, 34.267700]
@@ -24,7 +25,7 @@
             [29.496500, 34.267700]
         ]);
 
-        L.tileLayer('MapBox.bangpound.ij8i95a0').addTo(map);
+        L.tileLayer.provider('MapBox.bangpound.ij8i95a0').addTo(map);
 
         map.addLayer(drawnItems);
 
@@ -57,6 +58,7 @@
 
             drawnItems.addLayer(layer);
         });
+        }());
 
 
     </script>
