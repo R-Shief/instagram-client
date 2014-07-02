@@ -4,8 +4,10 @@ use Guzzle\GuzzleServiceProvider;
 use Silex\Application;
 use Silex\Provider\FormServiceProvider;
 use Silex\Provider\HttpFragmentServiceProvider;
+use Silex\Provider\LocaleServiceProvider;
 use Silex\Provider\RoutingServiceProvider;
 use Silex\Provider\SessionServiceProvider;
+use Silex\Provider\TranslationServiceProvider;
 use Silex\Provider\TwigServiceProvider;
 use Silex\Provider\ValidatorServiceProvider;
 use Silex\Provider\ServiceControllerServiceProvider;
@@ -17,8 +19,8 @@ $app->register(new ServiceControllerServiceProvider());
 $app->register(new HttpFragmentServiceProvider());
 $app->register(new TwigServiceProvider());
 $app->register(new FormServiceProvider());
-$app->register(new \Silex\Provider\LocaleServiceProvider());
-$app->register(new Silex\Provider\TranslationServiceProvider(), array(
+$app->register(new LocaleServiceProvider());
+$app->register(new TranslationServiceProvider(), array(
     'translator.domains' => array(),
   ));
 $app->register(new SessionServiceProvider(), array(
