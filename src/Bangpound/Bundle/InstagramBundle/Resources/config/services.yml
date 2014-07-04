@@ -1,0 +1,26 @@
+parameters:
+    bangpound_instagram.auth.class: Instagram\Auth
+    bangpound_instagram.guzzle.client.class: GuzzleHttp\Client
+    bangpound_instagram.client.class: Bangpound\Bundle\InstagramBundle\Client
+    bangpound_instagram.instagram.class: Instagram\Instagram
+
+services:
+    bangpound_instagram.auth:
+        class: %bangpound_instagram.auth.class%
+        arguments:
+            - { client_id: %instagram_client_id%, client_secret: %instagram_client_secret%, redirect_uri: %instagram_redirect_uri% }
+
+    bangpound_instagram.guzzle.client:
+        class: %bangpound_instagram.guzzle.client.class%
+
+    bangpound_instagram.client:
+        class: %bangpound_instagram.client.class%
+        arguments:
+            - @bangpound_instagram.guzzle.client
+            - @session
+
+    bangpound_instagram.instagram:
+        class: %bangpound_instagram.instagram.class%
+        arguments:
+            - @session
+            - @bangpound_instagram.client

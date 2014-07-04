@@ -1,0 +1,19 @@
+bangpound_instagram_homepage:
+    path:     /
+    defaults: { _controller: BangpoundInstagramBundle:Default:index }
+
+bangpound_instagram_location:
+    path:     /location/{lat}/{lng}
+    defaults: { _controller: BangpoundInstagramBundle:Default:location }
+
+bangpound_instagram_logout:
+    path:     /logout
+    defaults: { _controller: BangpoundInstagramBundle:Default:logout }
+
+bangpound_instagram_auth:
+    path:     /auth
+    defaults: { _controller: BangpoundInstagramBundle:Default:auth }
+
+bangpound_instagram_token:
+    path:     /token
+    defaults: { _controller: BangpoundInstagramBundle:Default:token }

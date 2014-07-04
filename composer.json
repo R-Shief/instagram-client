@@ -5,53 +5,61 @@
     "type": "project",
     "require": {
         "php": ">=5.3.3",
-        "silex/silex": "2.0.*@dev",
-        "symfony/class-loader": "~2.5",
-        "symfony/config": "~2.5",
-        "symfony/console": "~2.5",
-        "symfony/form": "~2.5",
-        "symfony/monolog-bridge": "~2.5",
-        "symfony/process": "~2.5",
-        "symfony/security": "~2.5",
-        "symfony/translation": "~2.5",
-        "symfony/twig-bridge": "~2.5",
-        "symfony/validator": "~2.5",
-        "guzzle/silex-provider": "2.0.*@dev",
+        "symfony/symfony": "2.5.*",
+        "doctrine/orm": "~2.2,>=2.2.3",
+        "doctrine/doctrine-bundle": "~1.2",
+        "twig/extensions": "~1.0",
+        "symfony/assetic-bundle": "~2.3",
+        "symfony/swiftmailer-bundle": "~2.3",
+        "symfony/monolog-bundle": "~2.4",
+        "sensio/distribution-bundle": "~3.0",
+        "sensio/framework-extra-bundle": "~3.0",
+        "incenteev/composer-parameter-handler": "~2.0",
         "php-instagram-api/php-instagram-api": "dev-master",
-        "doctrine/cache": "1.4.*@dev"
+        "doctrine/doctrine-cache-bundle": "~1.0",
+        "guzzlehttp/guzzle": "~4.0"
     },
     "require-dev": {
-        "silex/web-profiler": "2.0.*@dev",
-        "symfony/browser-kit": "~2.5",
-        "symfony/css-selector": "~2.5",
-        "symfony/debug": "~2.5",
-        "symfony/finder": "~2.5",
-        "raulfraile/ladybug": "dev-master"
+        "sensio/generator-bundle": "~2.3",
+        "raulfraile/ladybug-bundle": "dev-master"
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "http://github.com/bangpound/Silex-WebProfiler"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/bangpound/guzzle-silex-extension"
-        }
-    ],
     "autoload": {
         "psr-0": { "": "src/" }
     },
     "scripts": {
-        "post-update-cmd": [
-            "bower update"
+        "post-root-package-install": [
+            "SymfonyStandard\\Composer::hookRootPackageInstall"
         ],
         "post-install-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles",
             "bower install"
+        ],
+        "post-update-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles",
+            "bower update"
         ]
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
+    "config": {
+        "bin-dir": "bin"
+    },
     "extra": {
+        "symfony-app-dir": "app",
+        "symfony-bin-dir": "bin",
+        "symfony-var-dir": "var",
+        "symfony-web-dir": "web",
+        "incenteev-parameters": {
+            "file": "app/config/parameters.yml"
+        },
         "branch-alias": {
             "dev-master": "1.0.x-dev"
         }

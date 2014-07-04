@@ -1,0 +1,2 @@
+bangpound_instagram:
+    resource: "@BangpoundInstagramBundle/Resources/config/routing.yml"
