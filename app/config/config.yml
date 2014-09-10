@@ -33,7 +33,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ ]
+    bundles:        [ BangpoundInstagramBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -67,3 +67,9 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+sp_bower:
+    bundles:
+        BangpoundInstagramBundle: ~
+    assetic:
+        nest_dependencies: false
