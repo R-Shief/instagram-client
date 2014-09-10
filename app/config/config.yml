@@ -4,7 +4,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: "%locale%" }
+    translator:      { fallback: "%locale%" }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -79,3 +79,21 @@ sp_bower:
         BangpoundInstagramBundle: ~
     assetic:
         nest_dependencies: false
+
+fos_user:
+    db_driver: orm
+    firewall_name: secured_area
+    user_class: Bangpound\Bundle\UserBundle\Entity\User
+
+hwi_oauth:
+    # name of the firewall in which this bundle is active, this setting MUST be set
+    firewall_name: secured_area
+    resource_owners:
+        instagram:
+            type:                instagram
+            client_id:           %instagram_client_id%
+            client_secret:       %instagram_client_secret%
+    fosub:
+        properties:
+            instagram: instagram
+    connect: ~

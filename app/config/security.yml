@@ -1,12 +1,36 @@
 security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: sha512
+
     providers:
-        in_memory:
-            memory: ~
+        fos_userbundle:
+            id: fos_user.user_manager
 
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        default:
-            anonymous: ~
+        secured_area:
+            pattern:    ^/
+            form_login:
+                provider: fos_userbundle
+                login_path: /login
+                check_path: /login_check
+            anonymous: true
+            logout: ~
+            oauth:
+                resource_owners:
+                    instagram:     /login/check-instagram
+                login_path:        /login
+                failure_path:      /login
+
+                # FOSUB integration
+                oauth_user_provider:
+                    service: hwi_oauth.user.provider.fosub_bridge
+
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }

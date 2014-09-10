@@ -52,30 +52,4 @@ class DefaultController extends Controller
 
         return $this->render('BangpoundInstagramBundle:Default:location.html.twig', array('media' => $media));
     }
-
-    public function logoutAction(Request $request)
-    {
-        $request->getSession()->invalidate();
-
-        return $this->redirect('/');
-    }
-
-    public function authAction()
-    {
-        $auth = $this->get('bangpound_instagram.auth');
-        $auth->authorize();
-    }
-
-    public function tokenAction(Request $request)
-    {
-        $auth = $this->get('bangpound_instagram.auth');
-        $session = $this->get('session');
-        $code = $auth->getAccessToken($request->get('code'));
-        $session->set('code', $code);
-        $instagram = $this->get('bangpound_instagram.instagram');
-        $current_user = $instagram->getCurrentUser();
-        $session->set('username', $current_user->getUserName());
-
-        return $this->redirect('/');
-    }
 }

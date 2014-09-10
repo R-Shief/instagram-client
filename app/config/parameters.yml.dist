@@ -21,3 +21,5 @@ parameters:
     instagram_client_id: ~
     instagram_client_secret: ~
     instagram_redirect_uri: ~
+
+    hwi_oauth.user.provider.fosub_bridge.class: Bangpound\Bundle\UserBundle\Security\Core\User\FOSUBUserProvider

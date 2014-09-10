@@ -33,7 +33,7 @@
                     <li class="navbar-text">{{ app.session.get('username') }} - {{ app.session.get('api_limit') }}</li>
                     <li><a href="/logout">Logout</a></li>
                 {% else %}
-                    <li><a href="/auth">Authorize</a></li>
+                    <li><a href="{{ path('hwi_oauth_connect') }}">Authorize</a></li>
                 {% endif %}
             </ul>
         </div><!--/.nav-collapse -->

@@ -1,2 +1,20 @@
 bangpound_instagram:
     resource: "@BangpoundInstagramBundle/Resources/config/routing.yml"
+
+bangpound_user:
+    resource: "@BangpoundUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /connect
+
+hwi_oauth_login:
+    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+    prefix:   /login
+
+_hwi_oauth_connect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/connect.xml"
+
+instagram_login:
+    pattern: /login/check-instagram

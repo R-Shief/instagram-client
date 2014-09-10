@@ -1,0 +1,11 @@
+parameters:
+    authmap_repository.class:            Bangpound\Bundle\UserBundle\Entity\AuthMapRepository
+    authmap_repository.factory_argument: 'BangpoundUserBundle:AuthMap'
+
+services:
+    authmap_repository:
+        class:           %authmap_repository.class%
+        factory_service: doctrine.orm.entity_manager
+        factory_method:  getRepository
+        arguments:
+            - %authmap_repository.factory_argument%
