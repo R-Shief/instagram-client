@@ -1,17 +1,20 @@
 {% extends "BangpoundInstagramBundle::layout.html.twig" %}
 
 {% block stylesheets %}
-    <link href="{{ asset('vendor/leaflet/dist/leaflet.css') }}" rel="stylesheet">
-    <link href="{{ asset('vendor/leaflet.draw/dist/leaflet.draw.css') }}" rel="stylesheet">
+    {{ parent() }}
+    {% stylesheets '@leaflet_css' '@leaflet_draw_css' %}
+    <link href="{{ asset_url }}" rel="stylesheet">
+    {% endstylesheets %}
     <style>
         #map { height: 100vh; }
     </style>
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('vendor/leaflet/dist/leaflet.js') }}"></script>
-    <script src="{{ asset('vendor/leaflet-providers/leaflet-providers.js') }}"></script>
-    <script src="{{ asset('vendor/leaflet.draw/dist/leaflet.draw.js') }}"></script>
+    {{ parent() }}
+    {% javascripts '@leaflet_js' '@leaflet_providers_js' '@leaflet_draw_js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
     <script>
         (function () {
         var map = L.map('map').setView([51.505, -0.09], 13),
