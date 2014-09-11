@@ -46,7 +46,11 @@ class DefaultController extends Controller
     public function locationAction(Request $request, $lat, $lng)
     {
         $params = $request->query->all();
+        /** @var \HWI\Bundle\OAuthBundle\Security\Core\Authentication\Token\OAuthToken $token */
+        $token = $this->get('security.context')->getToken();
+
         $instagram = $this->get('bangpound_instagram.instagram');
+        $instagram->setAccessToken($token->getAccessToken());
 
         $media = $instagram->searchMedia( $lat, $lng, $params);
 

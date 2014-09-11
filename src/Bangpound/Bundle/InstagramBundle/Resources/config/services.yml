@@ -15,5 +15,6 @@ services:
     bangpound_instagram.instagram:
         class: %bangpound_instagram.instagram.class%
         arguments:
-            - @session
+            - ~
             - @bangpound_instagram.client
+        scope: request
