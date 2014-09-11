@@ -30,7 +30,7 @@ class DefaultController extends Controller
         if ($form->isValid()) {
             $data = $form->getData();
 
-            $url = $this->generateUrl('location', $data);
+            $url = $this->generateUrl('bangpound_instagram_location', $data);
 
             // redirect somewhere
             return $this->redirect($url);
