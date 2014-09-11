@@ -11,7 +11,6 @@ services:
         class: %bangpound_instagram.client.class%
         arguments:
             - @bangpound_instagram.guzzle.client
-            - @session
 
     bangpound_instagram.instagram:
         class: %bangpound_instagram.instagram.class%
