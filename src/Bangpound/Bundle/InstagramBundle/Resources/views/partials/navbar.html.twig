@@ -29,11 +29,11 @@
                 {#</li>#}
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                {% if app.session.has('code') %}
-                    <li class="navbar-text">{{ app.session.get('username') }} - {{ app.session.get('api_limit') }}</li>
-                    <li><a href="/logout">Logout</a></li>
+                {% if app.user %}
+                    <li class="navbar-text">{{ app.user.username }}</li>
+                    <li><a href="{{ logout_path('secured_area') }}">Logout</a></li>
                 {% else %}
-                    <li><a href="{{ path('hwi_oauth_connect') }}">Authorize</a></li>
+                    <li><a href="{{ path('hwi_oauth_service_redirect', { service: "instagram" }) }}">Authorize</a></li>
                 {% endif %}
             </ul>
         </div><!--/.nav-collapse -->
